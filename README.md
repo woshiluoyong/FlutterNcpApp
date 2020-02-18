@@ -1,16 +1,9 @@
-# flutter_application
+# FlutterNcpApp
+***
+本应用采用Dart语言编写查看NCP(新型冠状肺炎)疫情数据，采用Flutter跨平台技术，应用到封装网络请求，自定义组件(loading)，自定义绘制组件(时间轴)，两种跳转路由方式
+---
+>ui界面参考页面：`https://news.qq.com/zt2020/page/feiyan.htm?from=timeline&isappinstalled=0`
 
-A Flutter NCP Application.
+>接口地址Get获取：`https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5`
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+>app查看[地址](https://www.pgyer.com/l90t) 查看密码：`1234`
