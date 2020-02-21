@@ -7,3 +7,6 @@
 >接口地址Get获取：`https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5`
 
 >app查看[地址](https://www.pgyer.com/l90t) 查看密码：`1234`
+
+>![首页](https://www.pgyer.com/image/view/app_screenshots/79cbd2a8ba2805958d5366b6588b9274-528)
+![新闻](https://www.pgyer.com/image/view/app_screenshots/f41632ec12528cec0611d3156c39605f-528)
