@@ -21,13 +21,18 @@ class MyHomePage extends StatefulWidget {
   _MainHomePageState createState() => _MainHomePageState();
 }
 
-class _MainHomePageState extends State<MyHomePage> {
+class _MainHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
   final GlobalKey<ScaffoldState> globalMainKey = GlobalKey<ScaffoldState>();
   final GlobalKey easyRefreshKey = new GlobalKey();
 
   MainData mainData;
   List<Container> interList = List();
   List<Container> dayAddList = List();
+
+  Animation<double> animation;
+  AnimationController animationController;
+  Tween<double> sizeTween;
+  Tween<Color> colorTween;
 
   @override
   void initState() {
@@ -36,6 +41,15 @@ class _MainHomePageState extends State<MyHomePage> {
   }
 
   Future initLoadMainData(bool isLoading){
+    animationController = AnimationController(vsync: this, lowerBound: 0, upperBound: 1, duration: Duration(milliseconds: 3000));
+    animation = CurvedAnimation(parent: animationController, curve: Curves.bounceInOut);
+    animation.addListener((){
+      setState(() {});
+    });
+    sizeTween = Tween(begin: 0, end: 200);
+    colorTween = Tween(begin: Colors.transparent, end: Colors.deepOrange);
+    animationController.forward();
+
     DioManager dioManager = DioManager().initBindHttpDio(context, isLoading);
     return dioManager.request<MainData>(NWMethod.GET, NWApi.dataInfoPath, params: {'name': "disease_h5"}, success: (data) {
         mainData = data;
@@ -329,18 +343,19 @@ class _MainHomePageState extends State<MyHomePage> {
                         padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(border: Border.all(color: Colors.green, width: 1, style: BorderStyle.solid)),
                         alignment: Alignment.center,
+                        /*color: colorTween.evaluate(animation),*/
                         child: Text("数据来源：国家及各地卫健委每日信息发布", style: TextStyle(color: Colors.black, fontSize: 14,),),
                       );
                     case 1:
                       return Container(
                         alignment: Alignment.centerLeft,
                         margin: EdgeInsets.only(top: 10, left: 5, bottom: 5),
-                        child: Text("统计截止${null != mainData ? mainData.lastUpdateTime : "0000-00-00 00:00:00"}", style: TextStyle(color: Colors.grey, fontSize: 15,),),
+                        child: Text("${null != animationController ? animationController.value : 0}统计截止${null != mainData ? mainData.lastUpdateTime : "0000-00-00 00:00:00"}", style: TextStyle(color: Colors.grey, fontSize: 15,),),
                       );
                     case 3:
                       return Container(
                           margin: EdgeInsets.only(left: 5, right: 5),
-                          child: Column(
+                          child: FadeTransition(opacity: animationController, child: Column(
                             children: <Widget>[
                               Row(
                                 children: buildTopData(true),
@@ -349,7 +364,7 @@ class _MainHomePageState extends State<MyHomePage> {
                                 children: buildTopData(false),
                               ),
                             ],
-                          )
+                          ),)
                       );
                     case 4:
                       return Container(
