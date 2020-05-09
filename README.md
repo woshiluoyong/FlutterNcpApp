@@ -15,8 +15,11 @@
 >配置Flutter的开发环境
 
 1、 在Android Studio中先下载安装好Flutter和Dart的插件，然后下载Flutter的SDK。大小差不多1个G, 推荐去官网下载，速度并不慢，网址：https://flutter.io/setup-macos/
+
 2、解压zip，放在你需要放的路径下就行，配置环境变量时需要该路径。同时在AS中打开Preferences，搜索Dart和Flutter，配置好Flutter SDK的路径:"解压路径/flutter"。配置好Dart SDK的路径:"解压路径/flutter/bin/cache/dart-sdk"
+
 3、在终端打开open -e .bash_profile ，配置环境变量：
+
 ```
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
