@@ -29,4 +29,5 @@ export PATH=${PATH}:解压后的flutter的路径/flutter/bin:$PATH
 source ~/.bash_profile 可执行: echo $PATH 查看
 ```
 4、安装: 运行 flutter doctor --android-licenses ，一路选择yes即可
+
 5、对应项目的依赖安装命令为: flutter pub get
